@@ -1,3 +1,4 @@
+
 .mobile-nav-button-etnoc{
 	font-size: 300%;
 	color:#fff;
@@ -6,4 +7,16 @@
 .nav-button-etnoc{
 	font-size: 200%;
 	color:#fff;
+}
+
+.well-etnoc{
+	background-color: #000;
+	padding:15px;
+	border-color: #fff;
+	border-radius: 15px;
+}
+
+.product-header-etnoc{
+	 text-align:center;
+	 color:#fff;
 }

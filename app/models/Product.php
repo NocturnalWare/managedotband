@@ -31,4 +31,14 @@ class Product extends \Eloquent {
 
 
 	protected $table = 'products';
+		
+	public function inventories()
+	{
+		return($this->hasOne('Inventory', 'product_id'));
+	}
+
+	public function Sizes($size)
+	{
+		return Product::where('id', $this->id)->pluck($size);
+	}
 }

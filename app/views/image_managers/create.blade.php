@@ -1,0 +1,1 @@
+C:\xampp\htdocs\managedotband\app/views/image_managers/create.blade.php

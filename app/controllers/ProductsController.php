@@ -9,7 +9,7 @@ class ProductsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$products = Product::all();
+		$products = Product::with('inventories')->get();
 
 		return View::make('products.index', compact('products'));
 	}
@@ -51,7 +51,7 @@ class ProductsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$product = Product::findOrFail($id);
+		$product = Product::where('id', $id)->with('inventories')->first();
 
 		return View::make('products.show', compact('product'));
 	}
