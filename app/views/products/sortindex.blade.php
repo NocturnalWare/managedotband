@@ -1,3 +1,5 @@
+@extends('layouts.master.public')
+@section('content')
 @foreach($products as $product)
 <a href="{{route('products.show', $product->id)}}">
 	<div class="col-xs-6 col-md-4" >
@@ -13,3 +15,4 @@
 	</div>
 </a>	
 @endforeach
+@stop

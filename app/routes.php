@@ -16,8 +16,13 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+Route::get('products/sort/{category}', array('as' => 'productsort', 'uses' => 'ProductsController@sortindex'));
+
 Route::post('objectStorage', array('as' => 'objectStorage', 'uses' => 'ProductsController@objectStorage'));
+Route::post('commerce', array('as' => 'commerceDirector', 'uses' => 'SalesManagersController@commerceDirector'));
+
 Route::resource('products', 'ProductsController');
+Route::resource('carts', 'CartsController');
 Route::group(array('before' => 'auth.basic'), function(){
 	Route::resource('overlord', 'OverlordsController');
 });

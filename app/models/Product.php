@@ -41,4 +41,8 @@ class Product extends \Eloquent {
 	{
 		return Product::where('id', $this->id)->pluck($size);
 	}
+
+	public function categories(){
+		return $this->belongsTo('ProductCategory', 'name', 'category');
+	}
 }

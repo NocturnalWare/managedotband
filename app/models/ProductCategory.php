@@ -10,4 +10,8 @@ class ProductCategory extends \Eloquent {
 
 	protected $table = 'product_categories';
 
+	public function products(){
+		return $this->hasMany('Product', 'category', 'name');
+	}
+
 }

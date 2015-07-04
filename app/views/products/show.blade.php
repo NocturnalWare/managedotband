@@ -6,10 +6,11 @@
 	</div>
 	<div class="well-etnoc col-xs-12 col-md-2">
 		{{$product->description}}<br>
+		{{Form::hidden('product', $product->id, array('class' => 'product'))}}
 		@if($product->onesize == 1)One Size Only
-			{{Form::hidden('size', 'onesize')}}
+			{{Form::hidden('size', 'onesize', array('class' => 'size'))}}
 			@else
-			<select name="size" style="color:#000000;max-width:50%">
+			<select class="size" name="size" style="color:#000000;max-width:50%">
 				@if($product->xsmall == 1 && $product->inventories->xsmall)
 					<option value="xsmall">X-Small</option>
 				@endif
@@ -38,9 +39,33 @@
 					<option value="xxxlarge">XXX-Large</option>
 				@endif
 			</select>
-			<br>
-			<br>
-			<button type="button" class="btn-xs btn-warning">Add to Cart</button>
 		@endif	
+			<br>
+			<br>
+			<button id="cart" type="button" class="btn-xs btn-warning">Add to Cart</button>
 	</div>
+
+	<script>
+		$('#cart').on('click', function(){
+			alert()
+			var $post = {};
+        	var url = "{{route('commerceDirector')}}";
+
+            $post.size = $(this).parent().find('.size').val(); 
+            $post.product = $(this).parent().find('.product').val(); 
+            $post.commerceType = 'addCart';	
+            $.ajax({
+            type: "POST",
+            url: url,
+            data: $post,
+            cache: false,
+            success: function(data){
+               console.log(data);
+               return;
+            }
+            });
+
+            return false;
+		});
+	</script>
 @stop

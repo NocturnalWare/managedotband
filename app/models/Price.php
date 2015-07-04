@@ -1,6 +1,6 @@
 <?php
 
-class Inventory extends \Eloquent {
+class Price extends \Eloquent {
 
 	// Add your validation rules here
 	public static $rules = [
@@ -8,8 +8,7 @@ class Inventory extends \Eloquent {
 	];
 
 	// Don't forget to fill this array
-	protected $fillable = 
-	[
+	protected $fillable = [
 			'product_id',
 			'xsmall',
 			'small',
@@ -19,11 +18,8 @@ class Inventory extends \Eloquent {
 			'xxlarge',
 			'xxxlarge',
 			'onesize',
-	];
+			];
 
-	protected $table = 'inventories';
-
-	public function product(){
-		return $this->belongsTo('Product');
-	}
+	protected $table = 'prices';
+	
 }

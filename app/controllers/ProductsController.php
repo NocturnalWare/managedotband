@@ -14,6 +14,11 @@ class ProductsController extends \BaseController {
 		return View::make('products.index', compact('products'));
 	}
 
+	public function sortindex($category){
+		$products = Product::where('category', $category)->with('inventories')->get();
+		return View::make('products.sortindex', compact('products'));
+	}
+
 	/**
 	 * Show the form for creating a new product
 	 *

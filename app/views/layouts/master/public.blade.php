@@ -34,13 +34,13 @@
 </style>
 
 <body>
-<div style="overflow-x:hidden">
-@include('layouts.master.publicnav')
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="http://localhost/managedotband/public/assets/jquery/1.11.3/jquery.min.js"></script>
 <!-- <script src="{{public_path()}}/assets/jquery/1.11.3/jquery.min.js"></script> -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<div style="overflow-x:hidden">
+@include('layouts.master.publicnav')
 
 @yield('content')
 </div>
