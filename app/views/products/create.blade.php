@@ -1,0 +1,1 @@
+C:\xampp\htdocs\managedotband\app/views/products/create.blade.php
