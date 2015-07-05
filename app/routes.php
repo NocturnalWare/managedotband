@@ -19,7 +19,7 @@ Route::post('objectStorage', array('as' => 'objectStorage', 'uses' => 'ProductsC
 Route::post('commerce', array('as' => 'commerceDirector', 'uses' => 'SalesManagersController@commerceDirector'));
 
 Route::resource('products', 'ProductsController');
+	Route::resource('overlord', 'OverlordsController');
 Route::resource('carts', 'CartsController');
 Route::group(array('before' => 'auth.basic'), function(){
-	Route::resource('overlord', 'OverlordsController');
 });

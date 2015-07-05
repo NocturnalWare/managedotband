@@ -9,9 +9,9 @@ class OverlordsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$overlords = Overlord::all();
+		$products = Product::all();
 
-		return View::make('overlords.index', compact('overlords'));
+		return View::make('overlords.index', compact('products'));
 	}
 
 	/**
