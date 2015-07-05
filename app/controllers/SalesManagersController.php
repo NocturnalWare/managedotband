@@ -10,12 +10,14 @@ class SalesManagersController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
-		$salesmanagers = Salesmanager::all();
-
-		return View::make('salesmanagers.index', compact('salesmanagers'));
+	public function index(){
+		return View::make('hello');
 	}
+	// {
+	// 	$salesmanagers = Salesmanager::all();
+
+	// 	return View::make('salesmanagers.index', compact('salesmanagers'));
+	// }
 
 	public function doPayment()
 	{
@@ -136,7 +138,26 @@ class SalesManagersController extends \BaseController {
 			case 'addCart':
 				return $this->injectCart();
 			break;
+			case 'checkout':
+				return $this->stageShipping();
+			break;
+			case 'checkoutpament':
+				return $this->stageShipping2();
+			break;
+			case 'emptyCart':
+				return $this->emptyCart();
+			break;
 		}
+	}
+
+	public function stageShipping(){
+		return(View::make('carts.createshipping'));
+	}
+
+	public function stageShipping2(){
+		$customer = Input::all();
+
+		return(View::make('carts.payment', compact('customer')));
 	}
 
 	public function injectCart()
@@ -197,7 +218,7 @@ class SalesManagersController extends \BaseController {
 	{
 		Session::forget('checkoutAmt');
 		Session::forget('cart_id');
-		return Redirect::route('PublicIndex');
+		return Redirect::route('landing');
 	}
 
 	public function processPayment()

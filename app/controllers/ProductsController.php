@@ -115,6 +115,9 @@ class ProductsController extends \BaseController {
 			break;
 			case 'updateInventory':
 			break;
+			case 'checkout':
+				return(View::make('layouts.master.public'));
+			break;
 		}
 	}
 
