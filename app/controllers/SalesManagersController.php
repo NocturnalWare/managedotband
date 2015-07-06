@@ -141,8 +141,11 @@ class SalesManagersController extends \BaseController {
 			case 'checkout':
 				return $this->stageShipping();
 			break;
-			case 'checkoutpament':
-				return $this->stageShipping2();
+			case 'checkoutshipping':
+				return $this->createShipping();
+			break;
+			case 'checkoutpayment':
+				return $this->injectShipping();
 			break;
 			case 'emptyCart':
 				return $this->emptyCart();
@@ -160,10 +163,25 @@ class SalesManagersController extends \BaseController {
 		return(Cart::where('customer_id', Session::get('cart_id'))->where('item', Input::get('product'))->get());
 	}
 	public function stageShipping(){
+
+	// if(Shipping::where('cart_id', Session::get('cart_id'))->pluck('payment_status') == 'Paid'){
+			// return Redirect::route('alreadyPaid');}
+
+		Session::put('checkoutAmt', Input::get('checkoutAmt'));
 		return(View::make('carts.createshipping'));
 	}
 
-	public function stageShipping2(){
+	public function createShipping(){
+	}
+
+	public function injectShipping(){
+		$validator = Validator::make($data = Input::except('_token', 'commerceType'), Shipping::$rules);
+		if ($validator->fails())
+		{
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
+		Shipping::create($data);
+
 		$customer = Input::all();
 
 		return(View::make('carts.payment', compact('customer')));

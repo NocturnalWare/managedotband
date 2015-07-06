@@ -120,7 +120,7 @@ If you've shopped with us before we can probably find your address by email.
 <h2 style="color:#f0f0f0">Total with shipping: ${{substr(Session::get('checkoutAmt'),0,-2)}}.{{substr(Session::get('checkoutAmt'),-2)}}</h2>
 @endif
 
-		{{Form::hidden('commerceType', 'checkoutpament')}}
+		{{Form::hidden('commerceType', 'checkoutpayment')}}
 <button type="submit" style="border-radius:45px" class="button alert small">Check Out</button>
 {{Form::close()}}
 
