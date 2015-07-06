@@ -147,9 +147,18 @@ class SalesManagersController extends \BaseController {
 			case 'emptyCart':
 				return $this->emptyCart();
 			break;
+			case 'removeFromCart':
+				return $this->removeFromCart();
+			break;
+			case 'checkCart':
+				return $this->checkCart();
+			break;
 		}
 	}
 
+	public function checkCart(){
+		return(Cart::where('customer_id', Session::get('cart_id'))->where('item', Input::get('product'))->get());
+	}
 	public function stageShipping(){
 		return(View::make('carts.createshipping'));
 	}
@@ -207,11 +216,11 @@ class SalesManagersController extends \BaseController {
 
 	public function removeFromCart()
 	{
-		$item = Input::get('remID');
+		$item = Input::get('product');
 		$customer_id = Session::get('cart_id');
-			Cart::destroy($item);
+		Cart::destroy($item);
 
-		return Redirect::route('cart.index');
+		return Redirect::route('carts.index');
 	}
 	
 	public function emptyCart()

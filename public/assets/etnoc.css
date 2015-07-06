@@ -20,3 +20,15 @@
 	 text-align:center;
 	 color:#fff;
 }
+
+.btn-cancel-etnoc{
+	border:1px solid #fff;
+	border-radius:35px;
+	background-color:#700;
+}
+
+.btn-continue-etnoc{
+	border:1px solid #fff;
+	border-radius:35px;
+	background-color:#000;
+}

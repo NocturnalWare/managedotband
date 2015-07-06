@@ -41,31 +41,56 @@
 			</select>
 		@endif	
 			<br>
+			<div id="checkCart"></div> 
 			<br>
 			<button id="cart" type="button" class="btn-xs btn-warning">Add to Cart</button>
 	</div>
 
 	<script>
-		$('#cart').on('click', function(){
-			alert()
-			var $post = {};
-        	var url = "{{route('commerceDirector')}}";
+	checkCart();
+	function checkCart(){
+		var $post = {};
+        var url = "{{route('commerceDirector')}}";
 
-            $post.size = $(this).parent().find('.size').val(); 
-            $post.product = $(this).parent().find('.product').val(); 
-            $post.commerceType = 'addCart';	
-            $.ajax({
+        $post.product = $(".product:first").val();
+        $post.commerceType = 'checkCart';
+        console.log($post);
+        $.ajax({
             type: "POST",
             url: url,
             data: $post,
             cache: false,
             success: function(data){
-               console.log(data);
+               $('#checkCart').html('');
+               $.each(data, function(val, text){
+               		$('#checkCart').append(text.quantity+" "+text.size+' Currently in your cart.<br>');
+               });
                return;
             }
             });
 
-            return false;
-		});
+            return false;	
+	}
+		
+	$('#cart').on('click', function(){
+		var $post = {};
+    	var url = "{{route('commerceDirector')}}";
+
+        $post.size = $(this).parent().find('.size').val(); 
+        $post.product = $(this).parent().find('.product').val(); 
+        $post.commerceType = 'addCart';	
+        $.ajax({
+        type: "POST",
+        url: url,
+        data: $post,
+        cache: false,
+        success: function(data){
+           checkCart();
+           return;
+        }
+        });
+
+        return false;
+	});
 	</script>
 @stop
