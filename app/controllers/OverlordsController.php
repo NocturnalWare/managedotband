@@ -7,6 +7,17 @@ class OverlordsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+	public function overlord($director){
+		switch ($director) {
+			case 'viewInventory':
+				return View::make('overlords.products.inventory');
+			break;
+			case 'changeInventory':
+				return $this->changeInventory();
+			break;
+		}
+	}
+
 	public function index()
 	{
 		$products = Product::all();
@@ -14,6 +25,12 @@ class OverlordsController extends \BaseController {
 		return View::make('overlords.index', compact('products'));
 	}
 
+	public function showInventory(){
+
+	}
+	public function updateInventory(){
+
+	}
 	/**
 	 * Show the form for creating a new overlord
 	 *
@@ -102,6 +119,23 @@ class OverlordsController extends \BaseController {
 		Overlord::destroy($id);
 
 		return Redirect::route('overlords.index');
+	}
+
+	public function changeInventory(){
+		$inventory = Inventory::where('product_id', Input::get('id'))->first();
+		
+		$inventory->xsmall = Input::get('xsmall_inv');
+		$inventory->small = Input::get('small_inv');
+		$inventory->medium = Input::get('medium_inv');
+		$inventory->large = Input::get('large_inv');
+		$inventory->xlarge = Input::get('xlarge_inv');
+		$inventory->xxlarge = Input::get('xxlarge_inv');
+		$inventory->xxxlarge = Input::get('xxxlarge_inv');
+		$inventory->onesize = Input::get('onesize_inv');
+
+		$inventory->save();
+
+		return ('success!');
 	}
 
 }

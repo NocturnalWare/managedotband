@@ -17,7 +17,8 @@ Route::get('products/sort/{category}', array('as' => 'productsort', 'uses' => 'P
 
 Route::post('objectStorage', array('as' => 'objectStorage', 'uses' => 'ProductsController@objectStorage'));
 Route::post('commerce', array('as' => 'commerceDirector', 'uses' => 'SalesManagersController@commerceDirector'));
-
+Route::get('overmind/{director}', array('as' => 'overmind', 'uses' => 'OverlordsController@overlord'));
+Route::post('overmind/{director}', array('as' => 'overmind', 'uses' => 'OverlordsController@overlord'));
 Route::resource('products', 'ProductsController');
 	Route::resource('overlord', 'OverlordsController');
 Route::resource('carts', 'CartsController');
