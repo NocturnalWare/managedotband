@@ -45,4 +45,8 @@ class Product extends \Eloquent {
 	public function categories(){
 		return $this->belongsTo('ProductCategory', 'name', 'category');
 	}
+
+	public function prices(){
+		return $this->hasOne('Price', 'product_id');
+	}
 }

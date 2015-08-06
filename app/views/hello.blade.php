@@ -1,10 +1,9 @@
 @extends('layouts.master.public')
 @section('content')
-
 <div class="row">
 
 	<div class="col-xs-12">
-		<div class="col-xs-12 col-md-8 hidden homepage-main-article">
+		<div class="col-xs-12 col-md-8  hidden homepage-main-article">
 			<div class="col-xs-12" style="border:4px solid #000;height:300px;width:100%">
 				</div>
 			</div>
@@ -12,7 +11,7 @@
 			<div style="border:4px solid #000;height:300px;width:100%">Next Show</div>
 		</div>
 		<div style="width:90%" class="hidden-lg hidden-sm hidden-md homepage-featured-item-mobile">
-				<div style="overflow-y:scroll;height:300px;width:120%;overflow-x:hidden">
+				<div style="overflow-y:scroll;max-height:300px;width:120%;max-width:533px;overflow-x:hidden">
 					@include('products.index', ['products' => Product::all()])
 				</div>
 			</div>
@@ -31,5 +30,4 @@
 	</div>
 </div>
 
-@stop
 @stop

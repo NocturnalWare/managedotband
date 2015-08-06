@@ -21,7 +21,15 @@ Route::get('commerce', array('as' => 'commerceDirector', 'uses' => 'SalesManager
 Route::get('overmind/{director}', array('as' => 'overmind', 'uses' => 'OverlordsController@overlord'));
 Route::post('overmind/{director}', array('as' => 'overmind', 'uses' => 'OverlordsController@overlord'));
 Route::resource('products', 'ProductsController');
-	Route::resource('overlord', 'OverlordsController');
+Route::get('/transSuccess', array('as' => 'transSuccess', 'uses' => 'SalesManagersController@transSuccess'));
+Route::get('/alreadyPaid', array('as' => 'alreadyPaid', 'uses' => 'SalesManagersController@alreadyPaid'));
+Route::post('/findCustomerEmail', array('as' => 'findCustomerEmail',  'uses' => 'SalesManagersController@findCustomerEmail'));
+Route::get('/commerce/makeCCPayment', array('as' => 'makeCCPayment', 'uses' => 'SalesManagersController@makeCCPayment'));
+Route::get('/commerce/processPayment', array('as' => 'processPayment', 'uses' => 'SalesManagersController@processPayment'));
+
+
+
+Route::resource('overlord', 'OverlordsController');
 Route::resource('carts', 'CartsController');
 Route::group(array('before' => 'auth.basic'), function(){
 });

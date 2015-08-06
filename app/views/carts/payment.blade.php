@@ -45,7 +45,7 @@ ${{substr(Session::get('checkoutAmt'),0,-2)}}.{{substr(Session::get('checkoutAmt
 	{{Form::hidden('data-description', $checkoutAmt)}}
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="pk_test_W6oEoaW2cMMfY48MU483R4ia"
+    data-key="pk_live_wnPUnS7F4EcVpHtFBkkdPwz6"
     data-amount="{{$checkoutAmt}}"
     data-name="Eternally Nocturnal"
     data-description= "${{substr($checkoutAmt,0,-2)}}.{{substr($checkoutAmt,-2)}}"

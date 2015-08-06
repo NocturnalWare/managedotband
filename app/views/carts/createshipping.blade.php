@@ -1,18 +1,19 @@
 @extends('layouts.master.public')
 @section('content')
 <h2>{{$errors->first()}}</h2>
-<!-- <div style="background-color:#000000;width:100%;max-width:700px;height:100%;min-height:1000px;">
+<div style="background-color:#000000;width:100%;max-width:700px;height:100%;min-height:1000px;">
 If you've shopped with us before we can probably find your address by email.
-<div class="col-xs-12 large-5">
+{{Form::open(array('route' => 'findCustomerEmail', 'method' => 'post'))}}
+<div class="col-xs-12">
 	{{Form::text('email', '', array('placeholder' => 'Email'))}}
 </div>
 	
-<div class="small-8 large-5">
+<div class="col-xs-12">
 	{{Form::password('password', '', array('placeholder' => 'Password'))}}
 </div>
 		<button class="button tiny alert" type="submit">Use Email</button>
 	{{Form::close()}}
- -->
+
 
 
 

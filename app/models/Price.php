@@ -22,4 +22,8 @@ class Price extends \Eloquent {
 
 	protected $table = 'prices';
 	
+
+	public function prices(){
+		return $this->belongsTo('Product');
+	}
 }

@@ -58,7 +58,6 @@
         $.ajax({
             type: "POST",
             url: url,
-            data: $post,
             cache: false,
             success: function(data){
                $('#checkCart').html('');

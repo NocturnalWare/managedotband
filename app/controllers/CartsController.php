@@ -9,7 +9,6 @@ class CartsController extends \BaseController {
 	 */
 	public function index()
 	{
-		var_dump(Session::all());
 		if(Session::get('cart_id')){
 			$carts = Cart::where('customer_id', Session::get('cart_id'))->get();
 			return View::make('carts.index', compact('carts'));
