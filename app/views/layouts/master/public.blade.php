@@ -11,6 +11,7 @@
     body {
       margin:0;
       width: 100%;
+      font-size: 1.5em;
       font-family:'Lato', sans-serif;
       text-align:center;
       color: #ffffff;

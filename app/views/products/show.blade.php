@@ -1,7 +1,7 @@
 @extends('layouts.master.public')
-@section('content')
+@section('content')<center>
 	<legend class="product-header-etnoc">{{$product->name}}</legend>
-	<div class="col-xs-12 col-md-4">
+	<div class="col-xs-12 col-md-7">
 		<img class="img-responsive" src="https://www.eternallynocturnal.com/store/public/images/products/{{$product->main_image}}" />
 	</div>
 	<div class="well-etnoc col-xs-12 col-md-2">
@@ -43,9 +43,9 @@
 			<br>
 			<div id="checkCart"></div> 
 			<br>
-			<button id="cart" type="button" class="btn-xs btn-warning">Add to Cart</button>
+			<button id="cart" type="button" class="btn-xs btn-warning"><i class="fa fa-plus"></i> Add to Cart</button>
 	</div>
-
+	<div class="col-md-3"></div>
 	<script>
 	checkCart();
 	function checkCart(){
@@ -54,9 +54,9 @@
 
         $post.product = $(".product:first").val();
         $post.commerceType = 'checkCart';
-        console.log($post);
         $.ajax({
             type: "POST",
+            data: $post,
             url: url,
             cache: false,
             success: function(data){
@@ -66,15 +66,13 @@
                });
                return;
             }
-            });
-
-            return false;	
+        });
+		return false;	
 	}
 		
 	$('#cart').on('click', function(){
 		var $post = {};
     	var url = "{{route('commerceDirector')}}";
-
         $post.size = $(this).parent().find('.size').val(); 
         $post.product = $(this).parent().find('.product').val(); 
         $post.commerceType = 'addCart';	

@@ -11,7 +11,7 @@
 			<div style="border:4px solid #000;height:300px;width:100%">Next Show</div>
 		</div>
 		<div style="width:90%" class="hidden-lg hidden-sm hidden-md homepage-featured-item-mobile">
-				<div style="overflow-y:scroll;max-height:300px;width:120%;max-width:533px;overflow-x:hidden">
+				<div style="overflow-y:scroll;max-height:400px;width:120%;max-width:533px;overflow-x:hidden">
 					@include('products.index', ['products' => Product::all()])
 				</div>
 			</div>
